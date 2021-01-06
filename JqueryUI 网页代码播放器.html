@@ -19,7 +19,7 @@
         /* 设置背景颜色 */
         background-color: rgb(49, 49, 49);
 
-        /* overflow: hidden; */
+        overflow: hidden;
 
     }
     #menu {
@@ -225,7 +225,17 @@
         $(".code-container").hide();
         $("#css-code").css("margin-left","-350px");
         $("#js-code").css("margin-left","-350px");
-    
+        
+        // iframe 根据窗口大小调整结果显示框的大小
+        var $result = $("#result-frame");
+        var $window = $(window).on("resize",function(){
+
+            var height = $(this).height() - 530;
+            $result.height(height);
+
+        }).trigger("resize");
+
+
     $(".tab").click(function(event){
         $(this).nextAll(".tab").css("margin-left","-170px");
         $(this).nextAll(".code-container").animate(
